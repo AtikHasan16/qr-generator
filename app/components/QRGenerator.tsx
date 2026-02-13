@@ -130,7 +130,7 @@ export default function QRGenerator() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => downloadQR("png")}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow"
+                className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-purple-600 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow"
               >
                 <Download size={20} />
                 Download PNG
@@ -140,7 +140,7 @@ export default function QRGenerator() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => downloadQR("svg")}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow"
+                className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow"
               >
                 <Download size={20} />
                 Download SVG
@@ -210,7 +210,7 @@ export default function QRGenerator() {
             {/* Colors */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <label className="flex items-center gap-2">
                   <Palette size={16} />
                   Foreground
                 </label>
@@ -231,7 +231,7 @@ export default function QRGenerator() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <label className="flex items-center gap-2">
                   <Palette size={16} />
                   Background
                 </label>
