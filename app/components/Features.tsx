@@ -77,7 +77,7 @@ export default function Features() {
               className="glass-card rounded-2xl p-6 hover:shadow-xl transition-all duration-300 group"
             >
               <div
-                className={`inline-flex p-3 bg-gradient-to-r ${feature.gradient} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}
+                className={`inline-flex p-3 bg-linear-to-r ${feature.gradient} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}
               >
                 <feature.icon className="text-white" size={24} />
               </div>
