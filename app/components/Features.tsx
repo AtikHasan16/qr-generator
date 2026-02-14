@@ -47,7 +47,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="py-20 px-4 bg-gray-50 dark:bg-gray-900/50"
+      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900/50"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -55,17 +55,17 @@ export default function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             Powerful <span className="gradient-text">Features</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
             Everything you need to create professional QR codes for any purpose
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -74,16 +74,18 @@ export default function Features() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="glass-card rounded-2xl p-6 hover:shadow-xl transition-all duration-300 group"
+              className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 hover:shadow-xl transition-all duration-300 group"
             >
               <div
                 className={`inline-flex p-3 bg-linear-to-r ${feature.gradient} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}
               >
-                <feature.icon className="text-white" size={24} />
+                <feature.icon className="text-white" size={20} />
               </div>
 
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                 {feature.description}
               </p>
             </motion.div>

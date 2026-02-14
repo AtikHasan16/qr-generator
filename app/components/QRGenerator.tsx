@@ -92,44 +92,44 @@ export default function QRGenerator() {
   };
 
   return (
-    <section id="generator" className="py-20 px-4">
+    <section id="generator" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             Generate Your <span className="gradient-text">QR Code</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
             Customize every detail and download in your preferred format
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
           {/* QR Code Preview */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-card rounded-3xl p-8 flex flex-col items-center justify-center min-h-[500px]"
+            className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 flex flex-col items-center justify-center min-h-[400px] sm:min-h-[500px]"
           >
-            <div className="bg-white p-6 rounded-2xl shadow-lg mb-6">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg mb-4 sm:mb-6">
               <canvas ref={canvasRef} className="max-w-full h-auto" />
             </div>
 
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 justify-center w-full">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => downloadQR("png")}
-                className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-purple-600 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow"
+                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-linear-to-r from-purple-600 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow text-sm sm:text-base w-full sm:w-auto justify-center"
               >
-                <Download size={20} />
+                <Download size={18} className="sm:w-5 sm:h-5" />
                 Download PNG
               </motion.button>
 
@@ -137,9 +137,9 @@ export default function QRGenerator() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => downloadQR("svg")}
-                className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow"
+                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-medium hover:shadow-lg transition-shadow text-sm sm:text-base w-full sm:w-auto justify-center"
               >
-                <Download size={20} />
+                <Download size={18} className="sm:w-5 sm:h-5" />
                 Download SVG
               </motion.button>
 
@@ -147,7 +147,7 @@ export default function QRGenerator() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={copyToClipboard}
-                className="flex items-center gap-2 px-6 py-3 border-2 border-purple-600 text-purple-600 dark:text-purple-400 rounded-xl font-medium hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
+                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-purple-600 text-purple-600 dark:text-purple-400 rounded-xl font-medium hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors text-sm sm:text-base w-full sm:w-auto justify-center"
               >
                 {copied ? <Check size={20} /> : <Copy size={20} />}
                 {copied ? "Copied!" : "Copy"}
@@ -161,11 +161,11 @@ export default function QRGenerator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="glass-card rounded-3xl p-8 space-y-6"
+            className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6"
           >
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-4 sm:mb-6">
               <Settings2 className="text-purple-600" size={24} />
-              <h3 className="text-2xl font-bold">Customize</h3>
+              <h3 className="text-xl sm:text-2xl font-bold">Customize</h3>
             </div>
 
             {/* Text Input */}
