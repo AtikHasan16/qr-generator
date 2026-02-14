@@ -1,96 +1,111 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Palette, Download, Zap, Lock, Settings2, Share2 } from "lucide-react";
+import {
+  Palette,
+  Download,
+  Zap,
+  Lock,
+  Settings2,
+  Share2,
+  Sparkles,
+} from "lucide-react";
 
 const features = [
   {
     icon: Zap,
     title: "Instant Generation",
-    description: "Real-time QR code generation as you type with zero delay",
-    gradient: "from-yellow-400 to-orange-500",
+    description: "Real-time QR code generation as you type with zero delay.",
+    gradient: "from-amber-400 to-orange-500",
+    delay: 0.1,
   },
   {
     icon: Palette,
     title: "Full Customization",
-    description: "Customize colors, sizes, error correction, and margins",
-    gradient: "from-purple-400 to-pink-500",
+    description: "Control every detail: colors, sizes, error correction loops.",
+    gradient: "from-purple-500 to-pink-500",
+    delay: 0.2,
   },
   {
     icon: Download,
     title: "Multiple Formats",
-    description: "Download as PNG or SVG for any use case you need",
-    gradient: "from-blue-400 to-cyan-500",
+    description: "Export high-resolution PNGs or scalable SVGs instantly.",
+    gradient: "from-cyan-400 to-blue-500",
+    delay: 0.3,
   },
   {
     icon: Lock,
     title: "Privacy First",
     description:
-      "100% client-side processing - your data never leaves your device",
-    gradient: "from-green-400 to-emerald-500",
+      "100% client-side processing. Your data never leaves your browser.",
+    gradient: "from-emerald-400 to-green-500",
+    delay: 0.4,
   },
   {
     icon: Settings2,
-    title: "Advanced Options",
-    description: "Fine-tune error correction levels and margin spacing",
-    gradient: "from-indigo-400 to-purple-500",
+    title: "Pro Settings",
+    description:
+      "Fine-tune margins and error correction for reliable scanning.",
+    gradient: "from-indigo-500 to-violet-500",
+    delay: 0.5,
   },
   {
     icon: Share2,
     title: "Easy Sharing",
-    description: "Copy to clipboard with one click for instant sharing",
-    gradient: "from-pink-400 to-rose-500",
+    description:
+      "One-click copy to clipboard for seamless workflow integration.",
+    gradient: "from-pink-500 to-rose-500",
+    delay: 0.6,
   },
 ];
 
 export default function Features() {
   return (
-    <section
-      id="features"
-      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900/50"
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="features" className="section-wrapper">
+      <div className="text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-12 lg:mb-16"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-sm font-medium mb-6"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            Powerful <span className="gradient-text">Features</span>
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
-            Everything you need to create professional QR codes for any purpose
-          </p>
+          <Sparkles size={16} />
+          <span>Premium Features Free</span>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div
-                className={`inline-flex p-3 bg-linear-to-r ${feature.gradient} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <feature.icon className="text-white" size={20} />
-              </div>
+        <h2 className="heading-section">
+          Everything You <span className="text-gradient">Need</span>
+        </h2>
+        <p className="text-description">
+          A complete toolkit for professional QR code generation
+        </p>
+      </div>
 
-              <h3 className="text-lg sm:text-xl font-bold mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid-bento">
+        {features.map((feature) => (
+          <motion.div
+            key={feature.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: feature.delay }}
+            whileHover={{ y: -8 }}
+            className="glass-panel p-8 hover:border-purple-500/30 transition-all duration-500 group"
+          >
+            <div
+              className={`inline-flex p-3.5 rounded-2xl bg-linear-to-br ${feature.gradient} text-white mb-6 shadow-lg shadow-purple-500/10 group-hover:scale-110 transition-transform duration-300`}
+            >
+              <feature.icon size={24} />
+            </div>
+
+            <h3 className="text-xl font-bold mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+              {feature.title}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              {feature.description}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

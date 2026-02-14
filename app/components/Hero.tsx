@@ -10,9 +10,9 @@ export default function Hero() {
       <div className="absolute inset-0 gradient-bg opacity-10 dark:opacity-20" />
 
       {/* Animated Orbs */}
-      <div className="absolute top-20 left-2 sm:left-10 w-32 h-32 sm:w-72 sm:h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" />
+      <div className="absolute top-20 left-2 sm:left-10 w-32 h-32 sm:w-72 sm:h-72 bg-purple-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
       <div
-        className="absolute bottom-20 right-2 sm:right-10 w-32 h-32 sm:w-72 sm:h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
+        className="absolute bottom-20 right-2 sm:right-10 w-32 h-32 sm:w-72 sm:h-72 bg-blue-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"
         style={{ animationDelay: "1s" }}
       />
 
@@ -26,18 +26,18 @@ export default function Hero() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 mb-4 sm:mb-6"
+            className="glass-panel inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/50 dark:bg-white/5"
           >
-            <Sparkles size={16} className="sm:w-[18px] sm:h-[18px]" />
-            <span className="text-xs sm:text-sm font-medium">
-              100% Free • No Watermarks • No Limits
+            <Sparkles size={16} className="text-amber-400" />
+            <span className="text-xs sm:text-sm font-medium tracking-wide">
+              100% FREE • NO WATERMARKS
             </span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight px-2">
+          <h1 className="heading-hero">
             Create Beautiful
             <br />
-            <span className="gradient-text">QR Codes</span>
+            <span className="text-gradient">QR Codes</span>
             <br />
             Instantly
           </h1>
@@ -52,7 +52,7 @@ export default function Hero() {
               href="#generator"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 sm:px-8 sm:py-4 bg-linear-to-r from-purple-600 to-blue-500 text-white rounded-2xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto text-center"
+              className="btn-premium-primary"
             >
               Start Creating
             </motion.a>
@@ -61,7 +61,7 @@ export default function Hero() {
               href="#features"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 sm:px-8 sm:py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 rounded-2xl font-semibold text-base sm:text-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors w-full sm:w-auto text-center"
+              className="btn-premium-outline"
             >
               Learn More
             </motion.a>
