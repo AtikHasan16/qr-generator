@@ -52,7 +52,7 @@ export default function Hero() {
               href="#generator"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="px-8 py-4 bg-linear-to-r from-purple-600 to-blue-500 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               Start Creating
             </motion.a>
