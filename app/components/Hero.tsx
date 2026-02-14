@@ -6,8 +6,7 @@ import { Sparkles, Lock, Zap } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 gradient-bg opacity-10 dark:opacity-20" />
+      {/* Gradient Background - Removed in favor of global layout gradient */}
 
       {/* Animated Orbs */}
       <div className="absolute top-20 left-2 sm:left-10 w-32 h-32 sm:w-72 sm:h-72 bg-purple-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
