@@ -15,13 +15,8 @@ export default function QRGenerator() {
   const [errorCorrectionLevel, setErrorCorrectionLevel] =
     useState<ErrorCorrectionLevel>("M");
   const [margin, setMargin] = useState(4);
-  const [qrCodeUrl, setQrCodeUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    generateQRCode();
-  }, [text, size, fgColor, bgColor, errorCorrectionLevel, margin]);
 
   const generateQRCode = async () => {
     if (!text || !canvasRef.current) return;
@@ -36,13 +31,15 @@ export default function QRGenerator() {
         },
         errorCorrectionLevel: errorCorrectionLevel,
       });
-
-      const url = canvasRef.current.toDataURL();
-      setQrCodeUrl(url);
     } catch (err) {
       console.error("Error generating QR code:", err);
     }
   };
+
+  useEffect(() => {
+    generateQRCode();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text, size, fgColor, bgColor, errorCorrectionLevel, margin]);
 
   const downloadQR = (format: "png" | "svg") => {
     if (format === "png" && canvasRef.current) {
