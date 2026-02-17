@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import QRCode from "qrcode";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Download,
@@ -29,11 +28,14 @@ export default function QRGenerator() {
   const [isGenerating, setIsGenerating] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const generateQRCode = async () => {
+  const generateQRCode = useCallback(async () => {
     if (!text || !canvasRef.current) return;
     setIsGenerating(true);
 
     try {
+      // Dynamically import qrcode to reduce initial bundle size
+      const QRCode = (await import("qrcode")).default;
+
       await QRCode.toCanvas(canvasRef.current, text, {
         width: size,
         margin: margin,
@@ -46,19 +48,18 @@ export default function QRGenerator() {
     } catch (err) {
       console.error("Error generating QR code:", err);
     } finally {
-      setTimeout(() => setIsGenerating(false), 300);
+      setIsGenerating(false);
     }
-  };
+  }, [text, size, margin, fgColor, bgColor, errorCorrectionLevel]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       generateQRCode();
     }, 100); // Debounce generation
     return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text, size, fgColor, bgColor, errorCorrectionLevel, margin]);
+  }, [generateQRCode]);
 
-  const downloadQR = (format: "png" | "svg") => {
+  const downloadQR = async (format: "png" | "svg") => {
     if (format === "png" && canvasRef.current) {
       const url = canvasRef.current.toDataURL("image/png");
       const link = document.createElement("a");
@@ -66,6 +67,7 @@ export default function QRGenerator() {
       link.href = url;
       link.click();
     } else if (format === "svg") {
+      const QRCode = (await import("qrcode")).default;
       QRCode.toString(text, {
         type: "svg",
         width: size,
