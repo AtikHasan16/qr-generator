@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <span>Made by</span>
             <Heart size={16} className="text-red-500 fill-red-500" />
-            <span>Atik Hasan</span>
+            <span>MD Atik Hasan</span>
           </div>
 
           <div className="flex items-center gap-6">
