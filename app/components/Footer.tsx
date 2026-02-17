@@ -8,9 +8,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <span>Made with</span>
+            <span>Made by</span>
             <Heart size={16} className="text-red-500 fill-red-500" />
-            <span>using Next.js</span>
+            <span>Atik Hasan</span>
           </div>
 
           <div className="flex items-center gap-6">
