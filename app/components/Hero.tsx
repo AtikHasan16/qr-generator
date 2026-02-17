@@ -53,7 +53,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="btn-premium-primary"
             >
-              Start Creating
+              Start Creating your QR Code
             </motion.a>
 
             <motion.a
