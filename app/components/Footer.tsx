@@ -27,8 +27,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-6 text-center text-xs text-gray-500 dark:text-gray-500">
-          © {new Date().getFullYear()} Free QR Code Generator. All rights
-          reserved.
+          © {new Date().getFullYear()} QR Code Generator. All rights reserved.
         </div>
       </div>
     </footer>
