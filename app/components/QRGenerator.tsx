@@ -131,12 +131,12 @@ export default function QRGenerator() {
         {/* Left Column: Controls */}
         <div className="lg:col-span-5 space-y-6">
           {/* Tabs Navigation */}
-          <div className="glass-panel p-1.5 flex gap-1 sticky top-4 z-20">
+          <div className="glass-panel p-1.5  flex gap-1 sticky top-4 z-20">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as Tab)}
-                className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={` flex-1 flex items-center justify-center gap-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   activeTab === tab.id
                     ? "bg-white dark:bg-white/10 text-purple-600 dark:text-purple-400 shadow-sm"
                     : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
@@ -148,7 +148,7 @@ export default function QRGenerator() {
             ))}
           </div>
 
-          <div className="glass-panel p-6 sm:p-8 min-h-[400px]">
+          <div className="glass-panel min-h-fit">
             <AnimatePresence mode="wait">
               {activeTab === "content" && (
                 <motion.div
@@ -157,10 +157,10 @@ export default function QRGenerator() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
                   transition={{ duration: 0.2 }}
-                  className="space-y-6"
+                  className="space-y-6 "
                 >
                   <div>
-                    <label className="label-text">QR Content</label>
+                    <label className="label-text border ">QR Content</label>
                     <textarea
                       value={text}
                       onChange={(e) => setText(e.target.value)}
