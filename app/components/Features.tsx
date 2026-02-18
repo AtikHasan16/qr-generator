@@ -57,7 +57,7 @@ export default function Features() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="card bg-base-200/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow border border-white/5"
+              className="card bg-base-200/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow border border-white/5 rounded-3xl"
             >
               <div className="card-body">
                 <feature.icon className="h-10 w-10 text-primary mb-2" />

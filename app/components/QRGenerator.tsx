@@ -8,7 +8,6 @@ import {
   Settings2,
   Palette,
   Type,
-  RefreshCw,
 } from "lucide-react";
 
 type ErrorCorrectionLevel = "L" | "M" | "H";
@@ -97,7 +96,7 @@ export default function QRGenerator() {
     <section id="generator" className="py-10 px-4 max-w-5xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Controls Card */}
-        <div className="card bg-base-200/90 backdrop-blur-sm shadow-xl flex-1 h-fit border border-white/5">
+        <div className="card bg-base-200/90 backdrop-blur-sm shadow-xl flex-1 h-fit border border-white/5 rounded-3xl">
           <div className="card-body">
             <h2 className="card-title mb-4">Configuration</h2>
 
@@ -253,7 +252,7 @@ export default function QRGenerator() {
         </div>
 
         {/* Preview Card */}
-        <div className="card bg-base-200 shadow-xl flex-1 flex items-center justify-center p-8 text-center">
+        <div className="card bg-base-200 shadow-xl flex-1 flex items-center justify-center p-8 text-center rounded-3xl">
           <div className="bg-white p-4 rounded-xl shadow-sm mb-6 relative">
             <canvas ref={canvasRef} className="max-w-full h-auto" />
             {isGenerating && (
