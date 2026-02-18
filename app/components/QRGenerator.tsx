@@ -131,24 +131,33 @@ export default function QRGenerator() {
         {/* Left Column: Controls */}
         <div className="lg:col-span-5 space-y-6">
           {/* Tabs Navigation */}
-          <div className="glass-panel p-1.5  flex gap-1 sticky top-4 z-20">
+          <div className="glass-panel p-1.5 flex gap-1 sticky top-4 z-20 bg-white/50 dark:bg-black/20 backdrop-blur-xl border border-white/20">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as Tab)}
-                className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-300 z-10 ${
                   activeTab === tab.id
-                    ? "bg-white dark:bg-white/10 text-purple-600 dark:text-purple-400 shadow-sm"
-                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+                    ? "text-white"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
                 }`}
               >
-                <tab.icon size={16} />
-                {tab.label}
+                {activeTab === tab.id && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-linear-to-r from-primary-start to-primary-end rounded-xl shadow-lg shadow-purple-500/30"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative flex items-center gap-2">
+                  <tab.icon size={16} />
+                  {tab.label}
+                </span>
               </button>
             ))}
           </div>
 
-          <div className="glass-panel p-6 sm:p-8 min-h-[400px]">
+          <div className="glass-panel p-6 sm:p-8 min-h-[400px] flex flex-col">
             <AnimatePresence mode="wait">
               {activeTab === "content" && (
                 <motion.div
@@ -313,50 +322,63 @@ export default function QRGenerator() {
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="relative bg-white p-6 rounded-4xl shadow-2xl mb-8 group"
+                className="relative bg-white p-4 rounded-3xl shadow-2xl mb-8 group ring-8 ring-white/10 dark:ring-black/10"
               >
                 <div
-                  className={`transition-all duration-300 ${
-                    isGenerating ? "blur-sm scale-[0.98] opacity-80" : ""
+                  className={`transition-all duration-300 rounded-2xl overflow-hidden ${
+                    isGenerating ? "blur-md scale-[0.98] opacity-50" : ""
                   }`}
                 >
-                  <canvas ref={canvasRef} className="max-w-full h-auto" />
+                  <canvas ref={canvasRef} className="block w-full h-auto" />
                 </div>
 
-                {/* Empty State / Loading Overlay */}
+                {/* Loading Pulse */}
                 {isGenerating && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <RefreshCw className="w-8 h-8 text-purple-600 animate-spin" />
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <div className="absolute inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-sm rounded-3xl" />
+                    <RefreshCw className="w-10 h-10 text-primary-start animate-spin relative z-30" />
                   </div>
                 )}
               </motion.div>
 
-              <div className="flex flex-wrap gap-4 justify-center w-full max-w-md">
+              <div className="flex flex-col gap-3 w-full max-w-[280px]">
                 <button
                   onClick={() => downloadQR("png")}
-                  className="btn-premium-primary flex-1 group"
+                  className="btn-premium-primary w-full group relative overflow-hidden"
                 >
-                  <Download size={18} />
-                  <span>Download PNG</span>
-                  <div className="w-px h-4 bg-white/30 mx-2" />
-                  <span
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  <div className="relative flex items-center justify-center gap-2">
+                    <Download size={20} />
+                    <span className="text-lg">Download PNG</span>
+                  </div>
+                </button>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <button
                     onClick={(e) => {
                       e.stopPropagation();
                       downloadQR("svg");
                     }}
-                    className="text-xs opacity-80 hover:opacity-100 hover:bg-white/10 px-1.5 py-0.5 rounded transition-colors"
+                    className="btn-premium-outline text-sm py-2.5 hover:bg-white/10 border-white/20 text-gray-600 dark:text-gray-300"
                   >
-                    SVG
-                  </span>
-                </button>
+                    SVG Format
+                  </button>
 
-                <button
-                  onClick={copyToClipboard}
-                  className="btn-premium-outline flex-1"
-                >
-                  {copied ? <Check size={18} /> : <Copy size={18} />}
-                  {copied ? "Copied!" : "Copy URL"}
-                </button>
+                  <button
+                    onClick={copyToClipboard}
+                    className="btn-premium-outline text-sm py-2.5 hover:bg-white/10 border-white/20 text-gray-600 dark:text-gray-300"
+                  >
+                    {copied ? (
+                      <span className="flex items-center gap-1.5 text-green-500">
+                        <Check size={16} /> Copied
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-1.5">
+                        <Copy size={16} /> Copy Link
+                      </span>
+                    )}
+                  </button>
+                </div>
               </div>
 
               {/* Contrast Tip */}

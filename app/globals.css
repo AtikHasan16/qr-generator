@@ -71,9 +71,19 @@ body {
 
 @media (prefers-color-scheme: dark) {
   .glass-panel {
-    background: rgba(17, 24, 39, 0.7); /* Custom dark card bg */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(
+      17,
+      24,
+      39,
+      0.4
+    ); /* More transparent for better glass effect */
+    backdrop-filter: blur(24px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -131,9 +141,9 @@ body {
 
 /* Input Fields */
 .input-premium {
-  @apply w-full bg-white/50 dark:bg-black/20 border border-gray-200 dark:border-white/10 
-         rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400
-         focus:outline-none focus:border-primary-start focus:ring-1 focus:ring-primary-start
+  @apply w-full bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 
+         rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400
+         focus:outline-none focus:border-primary-start focus:ring-2 focus:ring-primary-start/50
          transition-all duration-300;
 }
 
