@@ -60,129 +60,9 @@ body {
   background: rgba(168, 85, 247, 0.5);
 }
 
-/* --- Premium Glassmorphism System --- */
-
-/* The main frosted glass effect */
-.glass-panel {
-  @apply backdrop-blur-md border border-white/10 shadow-lg;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: var(--radius-card);
-}
-
-@media (prefers-color-scheme: dark) {
-  .glass-panel {
-    background: rgba(
-      17,
-      24,
-      39,
-      0.4
-    ); /* More transparent for better glass effect */
-    backdrop-filter: blur(24px); /* Stronger blur */
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* --- Typography & Text --- */
-.heading-hero {
-  @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.1] text-balance px-2;
-}
-
-.heading-section {
-  @apply text-3xl md:text-5xl font-bold tracking-tight mb-4 text-balance;
-}
-
-.text-gradient {
-  @apply bg-linear-to-r from-primary-start to-primary-end bg-clip-text text-transparent;
-}
-
-.label-text {
-  @apply text-sm font-medium text-gray-500 dark:text-gray-400 mb-1.5 block uppercase tracking-wider text-[11px];
-}
-
-/* --- Buttons & Inputs --- */
-
-/* Primary Action Button with Shimmer */
-.btn-premium-primary {
-  @apply relative overflow-hidden bg-linear-to-r from-primary-start to-primary-end text-white font-semibold 
-         rounded-lg px-6 py-3 shadow-lg shadow-purple-500/20 
-         hover:shadow-purple-500/40 transition-all duration-300
-         flex items-center justify-center gap-2;
-}
-
-.btn-premium-primary::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transform: skewX(-20deg);
-  animation: btnShimmer 3s infinite;
-}
-
-/* Secondary/Outline Button */
-.btn-premium-outline {
-  @apply border border-primary-start/30 hover:border-primary-start text-primary-start dark:text-primary-end 
-         bg-transparent hover:bg-primary-start/5 rounded-lg px-6 py-3 
-         transition-all duration-300 font-medium
-         flex items-center justify-center gap-2;
-}
-
-/* Input Fields */
-.input-premium {
-  @apply w-full bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 
-         rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400
-         focus:outline-none focus:border-primary-start focus:ring-2 focus:ring-primary-start/50
-         transition-all duration-300;
-}
-
 /* --- Layout Utilities --- */
 .section-wrapper {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10;
-}
-
-.grid-bento {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
-}
-
-/* --- Animations --- */
-@keyframes btnShimmer {
-  0% {
-    left: -100%;
-  }
-  20% {
-    left: 200%;
-  }
-  100% {
-    left: 200%;
-  }
-}
-
-@keyframes pulse-subtle {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: scale(0.98);
-  }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Background Gradients */
@@ -192,7 +72,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0; /* Changed from -1 to 0 to ensure visibility on top of body bg */
+  z-index: 0;
   pointer-events: none;
   background:
     radial-gradient(
@@ -213,21 +93,6 @@ body {
     );
 }
 
-.bg-gradient-noise::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  opacity: 0.4;
-  mix-blend-mode: overlay;
-}
-
 .text-balance {
   text-wrap: balance;
-}
-
-/* Focus Utility */
-*:focus-visible {
-  outline: 2px solid var(--color-primary-start);
-  outline-offset: 2px;
 }
