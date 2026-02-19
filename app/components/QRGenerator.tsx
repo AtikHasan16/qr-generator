@@ -9,6 +9,7 @@ import {
   Palette,
   Type,
   X,
+  RotateCcw,
 } from "lucide-react";
 
 type ErrorCorrectionLevel = "L" | "M" | "H";
@@ -93,13 +94,30 @@ export default function QRGenerator() {
     }
   };
 
+  const resetDesign = () => {
+    setFgColor("#000000");
+    setBgColor("#ffffff");
+    setMargin(4);
+  };
+
   return (
     <section id="generator" className="py-10 px-4 max-w-5xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Controls Card */}
         <div className="card bg-base-200/90 backdrop-blur-sm shadow-xl flex-1 h-fit border border-white/5 rounded-3xl">
           <div className="card-body">
-            <h2 className="card-title mb-4">Configuration</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="card-title">Configuration</h2>
+              {activeTab === "design" && (
+                <button
+                  onClick={resetDesign}
+                  className="btn btn-ghost btn-xs gap-1 text-base-content/60 hover:text-base-content"
+                  title="Reset to default design"
+                >
+                  <RotateCcw size={12} /> Reset
+                </button>
+              )}
+            </div>
 
             <div
               role="tablist"
