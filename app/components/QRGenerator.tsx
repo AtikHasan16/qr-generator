@@ -8,6 +8,7 @@ import {
   Settings2,
   Palette,
   Type,
+  X,
 } from "lucide-react";
 
 type ErrorCorrectionLevel = "L" | "M" | "H";
@@ -139,12 +140,23 @@ export default function QRGenerator() {
                   <label className="label">
                     <span className="label-text">QR Content</span>
                   </label>
-                  <textarea
-                    className="textarea textarea-bordered h-32 font-mono text-sm"
-                    placeholder="Enter URL or text"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                  />
+                  <div className="relative">
+                    <textarea
+                      className="textarea textarea-bordered h-32 font-mono text-sm w-full"
+                      placeholder="Enter URL or text"
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                    />
+                    {text && (
+                      <button
+                        className="absolute top-2 right-2 btn btn-xs btn-circle btn-ghost opacity-50 hover:opacity-100"
+                        onClick={() => setText("")}
+                        title="Clear text"
+                      >
+                        <X size={14} />
+                      </button>
+                    )}
+                  </div>
                   <label className="label">
                     <span className="label-text-alt">{text.length} chars</span>
                   </label>
