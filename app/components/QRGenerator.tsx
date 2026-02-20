@@ -10,6 +10,7 @@ import {
   Type,
   X,
   RotateCcw,
+  Share2,
 } from "lucide-react";
 
 type ErrorCorrectionLevel = "L" | "M" | "H";
@@ -91,6 +92,33 @@ export default function QRGenerator() {
       });
     } catch (err) {
       console.error("Failed to copy:", err);
+    }
+  };
+
+  const shareQR = async () => {
+    if (!canvasRef.current) return;
+    try {
+      canvasRef.current.toBlob(async (blob) => {
+        if (!blob) return;
+        const file = new File([blob], "qrcode.png", { type: "image/png" });
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: "QR Code",
+              text: text,
+            });
+          } catch (error) {
+            if ((error as Error).name !== "AbortError") {
+              console.error("Error sharing:", error);
+            }
+          }
+        } else {
+          alert("Sharing is not supported on this device/browser.");
+        }
+      });
+    } catch (err) {
+      console.error("Failed to share:", err);
     }
   };
 
@@ -299,16 +327,18 @@ export default function QRGenerator() {
             >
               <Download size={18} /> Download PNG
             </button>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => downloadQR("svg")}
                 className="btn btn-outline btn-sm"
+                title="Download SVG"
               >
                 SVG
               </button>
               <button
                 onClick={copyToClipboard}
                 className="btn btn-outline btn-sm"
+                title="Copy to Clipboard"
               >
                 {copied ? (
                   <Check size={14} className="text-success" />
@@ -316,6 +346,13 @@ export default function QRGenerator() {
                   <Copy size={14} />
                 )}
                 {copied ? "Copied" : "Copy"}
+              </button>
+              <button
+                onClick={shareQR}
+                className="btn btn-outline btn-sm"
+                title="Share QR Code"
+              >
+                <Share2 size={14} /> Share
               </button>
             </div>
           </div>
